@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "./redux/slice/usersSlice";
+import { getUsers } from "./redux/slice/usersSlice";
 
 const UsersComponent = () => {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ const UsersComponent = () => {
 
   useEffect(() => {
     if (userStatus === "idle") {
-      dispatch(fetchUsers());
+      dispatch(getUsers());
     }
   }, [userStatus, dispatch]);
 

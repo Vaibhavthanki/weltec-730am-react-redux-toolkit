@@ -20,7 +20,17 @@ const usersSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
-    // Standard synchronous reducers go here
+    getUsers(state) {
+      state.status = "loading";
+    },
+    getUsersSuccess(state, action) {
+      state.status = "succeeded";
+      state.list = action.payload;
+    },
+    getUsersFailure(state, action) {
+      state.status = "failed";
+      state.error = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -37,5 +47,8 @@ const usersSlice = createSlice({
       });
   },
 });
+
+export const { getUsers, getUsersSuccess, getUsersFailure } =
+  usersSlice.actions;
 
 export default usersSlice.reducer;
